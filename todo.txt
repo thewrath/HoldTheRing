@@ -1,0 +1,14 @@
+- jouer avec le shader des ombres et de la lumiere ( petite torche par exemple ) 
+- corriger et nettoyer le code 
+- beug au niveau de l'anneaun, tuer l'ennemie lorsqu'il nous t ouche permettrais d'eviter cela 
+- ajouter un systeme de vie pour le hero ( tooouché sans ou avec l'anneau == ? )
+- ajouter une barre de stamina 
+- ajouter la particularité de chaque hero 
+- ajouter des power up
+- pofiner les reglage vitesse etc
+- mettre de la velocitée 
+- ajouter un menu 
+- les ennemies spawn a fond quand on a l'anneau 
+- tout les petits plus qui font que c'est un jeu finis ( peut etre taille d'ecran reglable :3)
+- ajouter un systeme qui fait baisser la luminosité quand on a l'anneau 
+- revoir les collision avec l'anneau et la destruction des ennemies 
