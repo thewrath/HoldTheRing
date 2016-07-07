@@ -34,7 +34,6 @@ function donjonManager.newDonjon()
   for i=1, 14 do
     --création de level
     donjon.levels[i] = levelManager.newLevel(i)
-    
   end
   
   --on parcour nos level a l'envers pour placer l'anneau
@@ -49,7 +48,6 @@ function donjonManager.newDonjon()
     donjon.levels[#donjon.levels-i].setEnvironnement()
   end
   
-
   function donjon.loadMiniMapFromSpriteMiniMap(pSpriteMiniMap)
     donjon.miniMap = pSpriteMiniMap
     donjon.setCurrentLevel(pSpriteMiniMap)
@@ -64,11 +62,11 @@ function donjonManager.newDonjon()
           if donjon.currentLevel ~= 1 then
             donjon.drawTitle = false
           end
-          
         end
       end
     end
   end
+  
   --fonction update du donjon
   function donjon.update(pPlayer)
     for i=1, #donjon.levels do
@@ -83,11 +81,11 @@ function donjonManager.newDonjon()
         donjon.levels[donjon.ring.level].ring.bool = true
         donjon.levels[donjon.ring.level].ring.x = pPlayer.x-10
         donjon.levels[donjon.ring.level].ring.y = pPlayer.y-10
-        donjon.levels[currentLevel].ennemies[donjon.ennemieToKill] = nil 
+        
       end
-      
     end
   end
+  
   --fonction draw du donjon
   function donjon.draw()
     donjon.levels[donjon.currentLevel].drawMap()
@@ -95,7 +93,6 @@ function donjonManager.newDonjon()
     if donjon.currentLevel == 1 and donjon.drawTitle == true then
       love.graphics.draw(donjon.gameLogo,50,50)
     end
-    
   end
   
   --fonction qui verifie les collision entre le joueur et l'anneau
@@ -114,7 +111,6 @@ function donjonManager.newDonjon()
     elseif pPlayer.ring == true then
       return true
     end
-    
   end
   
   --fonction qui verifie la collision entre le joueur et les ennemies 
@@ -128,10 +124,8 @@ function donjonManager.newDonjon()
       end
     end
   end
-  
 
   return donjon
-
 end
 
 return donjonManager

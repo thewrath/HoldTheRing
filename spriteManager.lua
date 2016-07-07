@@ -5,7 +5,6 @@ math.randomseed(os.time())
 
 local spriteManager = {}
 
-
 --constructor of the class sprite 
 function spriteManager.newSprite(pX, pY, pPathToTexture)
   
@@ -22,15 +21,13 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
   --le sprite ne possede pas l'anneaux au debut ( il faut qui le trouve ) 
   sprite.ring = false
   --le currentLevel
-  
   sprite.currentLevel = nil
-  
+
   --timer pour le score lorsque que le joueur possede l'anneau
   sprite.holdTheRingTimer = {}
   sprite.holdeTheRingTimer = love.timer.getTime()
   --de base on ne demarre pas le timer 
   sprite.holdTheRingTimer.start = false
-  
   
   --timer du sprite
   sprite.startTimer = love.timer.getTime()
@@ -38,8 +35,7 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
   
   -- gandalf = 1 aragorn = 2 gimli = 3 
   sprite.apparence = math.random(1,3)
-  
-  
+
   if sprite.apparence == 1 then
     sprite.textToSay = "Vous, ne passerez, pas !"
   elseif sprite.apparence == 2 then
@@ -47,7 +43,6 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
   elseif sprite.apparence == 3 then 
     sprite.textToSay = "Nous les nains, nous sommes des sprinters, \n redoutables sur de courtes distances !"
   end
-  
   
   --le tileset du sprite
   sprite.tileset = {}
@@ -61,9 +56,6 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
     love.graphics.newQuad(226,0,42,32,sprite.tileset.image:getDimensions()),  
   }
   
-  
-
-
   --another method like getter and setter 
   function sprite.move(pX, pY)
     sprite.x = sprite.x + pX
@@ -73,15 +65,13 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
   --charge la miniMap
   function sprite.loadMiniMap()
     --charge la miniMap 
-    
     sprite.miniMap[0] = {0,0,0,0,0,0,0}
     sprite.miniMap[1] = {0,13,4,2,3,9,0}
     sprite.miniMap[2] = {0,12,2,1,7,8,0}
     sprite.miniMap[3] = {0,14,6,5,10,11,0}
     sprite.miniMap[4] = {0,0,0,0,0,0,0}
-    
+
     --la position du sprite dans la miniMap
-    
     sprite.position[0] = {0,0,0,0,0,0,0}
     sprite.position[1] = {0,0,0,0,0,0,0}
     sprite.position[2] = {0,0,0,1,0,0,0}
@@ -92,6 +82,7 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
   function sprite.draw()
     sprite.endTimer = love.timer.getTime()
     if sprite.endTimer - sprite.startTimer < 8 then
+      love.graphics.setColor(255,255,255)
       love.graphics.print(sprite.textToSay, sprite.x+50,sprite.y)
     end
     --on dessine la petite map en bas à gauche 
@@ -106,9 +97,9 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
             love.graphics.setColor(255,255,255)
           else
             --on dessine un rectangle blanc 
+            love.graphics.setColor(255,255,255)
             love.graphics.rectangle("line",(16*x),400+(10*y),16,10)
           end
-          
         end
       end
     end
@@ -176,7 +167,6 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
       else
         sprite.y = sprite.y +50
       end
-      
     elseif pPositionToMove == 2 and sprite.x > 640 then
       if sprite.checkIfLevelInTheNextBorder(pPositionToMove) == true then
         sprite.position[sprite.isPosition.y][sprite.isPosition.x+1] = 1
@@ -185,7 +175,6 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
       else
         sprite.x = sprite.x -50
       end
-      
     elseif pPositionToMove == 3 and sprite.y > 480 then
       if sprite.checkIfLevelInTheNextBorder(pPositionToMove) == true then
         sprite.position[sprite.isPosition.y+1][sprite.isPosition.x] = 1
@@ -194,7 +183,6 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
       else
         sprite.y = sprite.y -50
       end
-      
     elseif pPositionToMove == 4 and sprite.x < 0 then
       if sprite.checkIfLevelInTheNextBorder(pPositionToMove) == true then
         sprite.position[sprite.isPosition.y][sprite.isPosition.x-1] = 1
@@ -204,7 +192,6 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
         sprite.x = sprite.x +50
       end
     end
-    
   end
 
   --fonction pour savoir ou est le sprite dans sa liste position 
@@ -219,7 +206,6 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
         end
       end
     end
-    
   end
   
   --la fonction qui verifie si le sprite a l'anneau 
@@ -238,26 +224,19 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
         --on demarre le timer pour le score du joueur 
         sprite.holdTheRingTimer.start = false 
       end
-      
     end
-  
-    
   end
-  
+
   --fonction qui appelée lorsque que un ennemie touche le hero 
   function sprite.hit()
     if sprite.ring == true then
       sprite.ring = false
-    
     end
-    
   end
   
-
   --on appelle certaines méthode lors de l'initialisation 
   sprite.loadMiniMap()
   sprite.whereIsLocatedMySprite()
-
   return sprite
 end
 

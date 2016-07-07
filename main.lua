@@ -27,7 +27,6 @@ function love.load()
   donjon = donjonManager.newDonjon()
   donjon.loadMiniMapFromSpriteMiniMap(hero.miniMap)
   
-  
   --liv load des du lightworld
   -- create light world
 	lightWorld = love.light.newWorld()
@@ -41,8 +40,6 @@ function love.load()
 	light:setGlowStrength(0.1)
 	light:setSun(false)
   --liv
-  
-  
 end
 
 function love.update()
@@ -68,7 +65,6 @@ function love.update()
   donjon.setCurrentLevel(hero.position)  
   hero.ring = donjon.checkCollisionPlayerAndRing(hero)
   donjon.update(hero)
-  
 end
 
 function love.draw()

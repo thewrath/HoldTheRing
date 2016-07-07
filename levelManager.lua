@@ -1,13 +1,11 @@
 module = "levelManager"
 
-
 --on importe les modules necessaire 
 ennemiesManager = require("ennemiesManager")
 --generer la graine aleatoire 
 math.randomseed(os.time())
 
 local levelManager = {}
-
 
 --genere un level
 function levelManager.newLevel(pId)
@@ -20,8 +18,6 @@ function levelManager.newLevel(pId)
   level.ring.bool = false
   level.ring.x = nil
   level.ring.y = nil 
-  
-
   
   --les ennemies du level
   level.ennemies = {}
@@ -39,7 +35,6 @@ function levelManager.newLevel(pId)
     love.graphics.newQuad(748,375,32,32,level.tileset.image:getDimensions()),
     love.graphics.newQuad(474,509,32,32,level.tileset.image:getDimensions()),
     love.graphics.newQuad(512,443,32,32,level.tileset.image:getDimensions())
-    
   }
   
   --fonction update du level  
@@ -63,25 +58,18 @@ function levelManager.newLevel(pId)
           love.graphics.draw(level.tileset.image, level.tileset.quads[1], 32*x, 32*y)
           love.graphics.draw(level.tileset.image, level.tileset.quads[level.map[y][x]], 32*x, 32*y) 
         end
-          
-      
       end
     end
     --print(level.id, level.ring.bool)
     --on dessine l'anneau
     if level.ring.bool == true then
-      
       love.graphics.draw(level.tileset.image, level.tileset.quads[5], level.ring.x,level.ring.y)
     end
-    
     for i=1, #level.ennemies do
       level.ennemies[i].draw()
     end
-    
-    
   end
-
-
+  
   --fonction pour generer les monstres du level
   function level.loadEnnemies()
     if level.id ~= 1 then
@@ -91,9 +79,6 @@ function levelManager.newLevel(pId)
       end
     end
   end
-  
-  
-  
   
   --fonction pour créer un level avec l'anneaux
   function level.setTheRingLevel(rang)
@@ -105,11 +90,8 @@ function levelManager.newLevel(pId)
         level.ring.x = math.random(50,600)
         level.ring.y = math.random(40,400)
       end
-      
     end
-    
   end
-  
   
   --fonction qui modifie le decors en fonction du nombre d'ennemie dans le level( si 5 un coffre )
   function level.setEnvironnement()
@@ -147,7 +129,6 @@ function levelManager.newLevel(pId)
   --on charge les ennemies 
   level.loadEnnemies()
   return level
-
 end
 
 --fonction pour generer un niveau 
@@ -183,14 +164,9 @@ function levelManager.loadMap()
     else
       map[y][math.random(1,20)] = 1
     end
-    
   end
-  
-  
   return map
 end
-
-
 
 return levelManager
 

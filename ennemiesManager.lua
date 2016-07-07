@@ -39,7 +39,6 @@ function ennemiesManager.newEnnemie(pX, pY, pPathToTexture, pEnnemieType)
     elseif pPlayer.x < ennemie.x then
       ennemie.x = ennemie.x - 2
     end
-    
   end
   
   --fonction pour reset les positions de l'ennemie 
@@ -47,8 +46,6 @@ function ennemiesManager.newEnnemie(pX, pY, pPathToTexture, pEnnemieType)
     ennemie.x = ennemie.lastX
     ennemie.y = ennemie.lastY 
   end
-  
-  
   return ennemie
 end
 
