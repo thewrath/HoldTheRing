@@ -76,13 +76,12 @@ function donjonManager.newDonjon()
       print("hero touché",pPlayer.x,pPlayer.y)
       --on detrui l'ennemie et on fait perdre au joueur son anneau 
       if pPlayer.ring == true then
-        pPlayer.hit()
         donjon.ring.level = pPlayer.currentLevel
         donjon.levels[donjon.ring.level].ring.bool = true
         donjon.levels[donjon.ring.level].ring.x = pPlayer.x-10
         donjon.levels[donjon.ring.level].ring.y = pPlayer.y-10
-        
       end
+      pPlayer.hit()
     end
   end
   

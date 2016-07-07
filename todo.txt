@@ -1,6 +1,6 @@
 - jouer avec le shader des ombres et de la lumiere ( petite torche par exemple ) 
 - corriger et nettoyer le code 
-- beug au niveau de l'anneaun, tuer l'ennemie lorsqu'il nous t ouche permettrais d'eviter cela 
+- il faut reussir a tuer l'ennemie lorsqu'il touche l'anneau 
 - ajouter un systeme de vie pour le hero ( tooouché sans ou avec l'anneau == ? )
 - ajouter une barre de stamina 
 - ajouter la particularité de chaque hero 

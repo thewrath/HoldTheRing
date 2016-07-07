@@ -17,6 +17,8 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
   sprite.size = {}
   sprite.size.x = 32
   sprite.size.y = 32
+  --le joueur est en vie
+  sprite.inLive = true
   
   --le sprite ne possede pas l'anneaux au debut ( il faut qui le trouve ) 
   sprite.ring = false
@@ -54,6 +56,7 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
     love.graphics.newQuad(160,0,34,32,sprite.tileset.image:getDimensions()),
     love.graphics.newQuad(194,0,32,32,sprite.tileset.image:getDimensions()),
     love.graphics.newQuad(226,0,42,32,sprite.tileset.image:getDimensions()),  
+    love.graphics.newQuad(108,0,20,32,sprite.tileset.image:getDimensions())
   }
   
   --another method like getter and setter 
@@ -210,19 +213,21 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
   
   --la fonction qui verifie si le sprite a l'anneau 
   function sprite.checkTheRing()
-    if sprite.ring == true then
-      if sprite.apparence < 4 then
-        --on change l'apparence du personnage +3
-        sprite.apparence = sprite.apparence + 3
-        --on demarre le timer pour le score du joueur 
-        sprite.holdTheRingTimer.start = true 
-      end
-    else
-      if sprite.apparence >3 then
-         --on change l'apparence du personnage -3
-        sprite.apparence = sprite.apparence - 3
-        --on demarre le timer pour le score du joueur 
-        sprite.holdTheRingTimer.start = false 
+    if sprite.inLive == true then 
+      if sprite.ring == true then
+        if sprite.apparence < 4 then
+          --on change l'apparence du personnage +3
+          sprite.apparence = sprite.apparence + 3
+          --on demarre le timer pour le score du joueur 
+          sprite.holdTheRingTimer.start = true 
+        end
+      else
+        if sprite.apparence >3 then
+           --on change l'apparence du personnage -3
+          sprite.apparence = sprite.apparence - 3
+          --on demarre le timer pour le score du joueur 
+          sprite.holdTheRingTimer.start = false 
+        end
       end
     end
   end
@@ -231,6 +236,10 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
   function sprite.hit()
     if sprite.ring == true then
       sprite.ring = false
+    else 
+      sprite.inLive = false
+      print("ok")
+      sprite.apparence = 7
     end
   end
   

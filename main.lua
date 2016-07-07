@@ -49,19 +49,21 @@ function love.update()
   --liv
   
   --deplacement du hero au clavier
-  if love.keyboard.isDown("up") then
-    hero.move(0,-10)
-    hero.movePositionInList(1)
-  elseif love.keyboard.isDown("down") then
-    hero.move(0,10)
-    hero.movePositionInList(3)
-  elseif love.keyboard.isDown("left") then
-    hero.move(-10,0)
-    hero.movePositionInList(4)
-  elseif love.keyboard.isDown("right") then
-    hero.move(10,0)
-    hero.movePositionInList(2)
-  end  
+  if hero.inLive == true then
+    if love.keyboard.isDown("up") then
+      hero.move(0,-10)
+      hero.movePositionInList(1)
+    elseif love.keyboard.isDown("down") then
+      hero.move(0,10)
+      hero.movePositionInList(3)
+    elseif love.keyboard.isDown("left") then
+      hero.move(-10,0)
+      hero.movePositionInList(4)
+    elseif love.keyboard.isDown("right") then
+      hero.move(10,0)
+      hero.movePositionInList(2)
+    end  
+  end
   donjon.setCurrentLevel(hero.position)  
   hero.ring = donjon.checkCollisionPlayerAndRing(hero)
   donjon.update(hero)

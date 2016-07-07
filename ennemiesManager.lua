@@ -27,17 +27,22 @@ function ennemiesManager.newEnnemie(pX, pY, pPathToTexture, pEnnemieType)
   --fonction qui update 
   function ennemie.update(pPlayer)
     --l'ennemie va vers le joueur 
-    --si joueur trop loin 
-    if pPlayer.y > ennemie.y then
-      ennemie.y = ennemie.y + 2
-    elseif pPlayer.y < ennemie.y then
-      ennemie.y = ennemie.y - 2
-    end
-    
-    if pPlayer.x > ennemie.x then
-      ennemie.x = ennemie.x + 2
-    elseif pPlayer.x < ennemie.x then
-      ennemie.x = ennemie.x - 2
+    --si joueur trop loin et vivant
+    if pPlayer.inLive == true then
+      if pPlayer.y > ennemie.y then
+        ennemie.y = ennemie.y + 2
+      elseif pPlayer.y < ennemie.y then
+        ennemie.y = ennemie.y - 2
+      end
+      
+      if pPlayer.x > ennemie.x then
+        ennemie.x = ennemie.x + 2
+      elseif pPlayer.x < ennemie.x then
+        ennemie.x = ennemie.x - 2
+      end
+    else 
+      ennemie.y = ennemie.y -2 
+      ennemie.x = ennemie.y -2
     end
   end
   
