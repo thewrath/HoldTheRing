@@ -84,7 +84,7 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
 
   function sprite.draw()
     sprite.endTimer = love.timer.getTime()
-    if sprite.endTimer - sprite.startTimer < 8 then
+    if sprite.endTimer - sprite.startTimer < 6 and sprite.inLive == true then
       love.graphics.setColor(255,255,255)
       love.graphics.print(sprite.textToSay, sprite.x+50,sprite.y)
     end
@@ -236,10 +236,18 @@ function spriteManager.newSprite(pX, pY, pPathToTexture)
   function sprite.hit()
     if sprite.ring == true then
       sprite.ring = false
+      --on deplace le joueur pour un peu de repis
+      if sprite.y + 132 < 480 then
+        sprite.y = sprite.y + 100
+      else
+        sprite.y = sprite.y - 100
+      end
+      
     else 
       sprite.inLive = false
       print("ok")
       sprite.apparence = 7
+      
     end
   end
   

@@ -11,4 +11,7 @@
 - les ennemies spawn a fond quand on a l'anneau 
 - tout les petits plus qui font que c'est un jeu finis ( peut etre taille d'ecran reglable :3)
 - ajouter un systeme qui fait baisser la luminosité quand on a l'anneau 
-- revoir les collision avec l'anneau et la destruction des ennemies 
+- revoir les collision avec l'anneau et la destruction des ennemies il ne faut que le hero meurt lorsqu'il a l'anneau et qu'un ennemie le touche 
+- ajouter un bouton restart
+- les ennemies pop a fond quand on a l'anneau
+- ajouter des sprite animés 

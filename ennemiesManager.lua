@@ -42,7 +42,7 @@ function ennemiesManager.newEnnemie(pX, pY, pPathToTexture, pEnnemieType)
       end
     else 
       ennemie.y = ennemie.y -2 
-      ennemie.x = ennemie.y -2
+      ennemie.x = ennemie.x -2
     end
   end
   
